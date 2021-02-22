@@ -27,7 +27,7 @@ spec:
   http:
   - route:
     - destination:
-        host: mvcclient-service
+        host: mvc-app-service
 # resilience
     retries:
       attempts: 2
