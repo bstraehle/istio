@@ -22,3 +22,11 @@ kubectl get pods -o=custom-columns="images:spec.containers[*].image"
 kubectl get pods  
 istioctl x describe pod <pod>  
 ```
+- Inspect Istio ingress gateway:  
+```
+kubectl get services istio-ingressgateway -n istio-system  
+```
+- URL:  
+```
+https://<external-ip>  
+```
