@@ -8,7 +8,7 @@ spec:
   servers:
   - port:
       number: 8080
-      name: http-demo-gateway-mvc-app
+      name: http
       protocol: HTTP
     hosts:
     - "*"
