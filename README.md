@@ -18,7 +18,7 @@ git clone https://github.com/bstraehle/istio.git
 cd istio  
 kubectl apply -f istio.custom.yaml  
 ```
-- Inspect Envoy sidecar proxies and cluster-wide mTLS:  
+- Inspect cluster-wide mTLS:  
 ```
 kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
 kubectl get pods  
