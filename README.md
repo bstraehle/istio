@@ -1,11 +1,9 @@
 - Create GKE, EKS, or AKS cluster, see https://github.com/bstraehle/kubernetes.git  
-- Download Istio:  
+- Download and install Istio:  
 ```
 curl -L https://istio.io/downloadIstio | sh -  
-```
-- Install Istio:  
-```
 cd istio-<x>.<y>.<z>  
+export PATH=$PWD/bin:$PATH
 istioctl install --set profile=demo  
 ```
 - Instruct Istio to automatically inject Envoy sidecar proxies:  
@@ -13,15 +11,15 @@ istioctl install --set profile=demo
 kubectl label namespace default istio-injection=enabled  
 ```
 - Create Kubernetes deployments and services, see https://github.com/bstraehle/kubernetes.git  
-- Apply cluster-wide mTLS:  
+- Apply Istio security, traffic management, and observability:  
 ```
 git clone https://github.com/bstraehle/istio.git  
 cd istio  
 kubectl apply -f istio.custom.yaml  
 ```
-- Inspect cluster-wide mTLS:  
+- Inspect Istio security, traffic management, observability:  
 ```
 kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
 kubectl get pods  
-istioctl x describe pod <pod> | grep "TLS"  
+istioctl x describe pod <pod>  
 ```
