@@ -20,7 +20,7 @@ kubectl apply -f istio.custom.yaml
 ```
 kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
 kubectl get pods  
-istioctl x describe pod <pod>  
+istioctl x describe service mvc-app-service  
 ```
 - Inspect Istio ingress gateway:  
 ```
