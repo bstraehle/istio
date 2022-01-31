@@ -2,7 +2,7 @@
 - Download and install Istio:  
 ```
 curl -L https://istio.io/downloadIstio | sh -  
-cd istio-<x>.<y>.<z>  
+cd istio-*  
 istioctl install --set profile=demo  
 ```
 - Instruct Istio to automatically inject Envoy sidecar proxies:  
