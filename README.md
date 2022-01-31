@@ -28,5 +28,5 @@ kubectl get services istio-ingressgateway -n istio-system
 ```
 - URL:  
 ```
-https://<external-ip>  
+<external-ip>  
 ```
