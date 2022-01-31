@@ -29,11 +29,11 @@ spec:
         port:
           number: 8000
 ---
-apiVersion: "security.istio.io/v1beta1"
-kind: "PeerAuthentication"
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
 metadata:
-  name: "default"
-  namespace: "default"
+  name: default
+  namespace: default
 spec:
   mtls:
     mode: STRICT
@@ -44,7 +44,7 @@ metadata:
   name: default
   namespace: default
 spec:
-  host: *.default.svc.cluster.local
+  host: "*.default.svc.cluster.local"
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
