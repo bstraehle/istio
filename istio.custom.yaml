@@ -26,8 +26,6 @@ spec:
   - route:
     - destination:
         host: mvc-app-service
-        port:
-          number: 8000
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
