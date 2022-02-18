@@ -1,4 +1,5 @@
 Create GKE, EKS, or AKS cluster, see https://github.com/bstraehle/kubernetes.git#readme  
+
 Download and install Istio:  
 ```
 curl -L https://istio.io/downloadIstio | sh -  
@@ -10,6 +11,7 @@ Instruct Istio to automatically inject Envoy sidecar proxies:
 kubectl label namespace default istio-injection=enabled  
 ```
 Create Kubernetes deployments and services, see https://github.com/bstraehle/kubernetes.git#readme  
+
 Apply Istio security, traffic management, and observability:  
 ```
 git clone https://github.com/bstraehle/istio.git  
