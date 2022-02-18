@@ -30,3 +30,5 @@ kubectl get services istio-ingressgateway -n istio-system
 ```
 <external-ip>  
 ```
+Useful Links:  
+- Book: <a href="https://www.manning.com/books/istio-in-action">Istio in Action</a>  
