@@ -33,4 +33,4 @@ URL:
 <external-ip>  
 ```
 Useful Links:  
-- Book: <a href="https://www.manning.com/books/istio-in-action">Istio in Action</a>  
+- Book: <a href="https://www.amazon.com/Istio-Running-Service-Connect-Control/dp/1492043788/ref=sr_1_5">O’Reilly: Istio Up & Running - Using a Service Mesh to Connect, Secure, Control, and Observe</a>  
