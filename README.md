@@ -1,4 +1,4 @@
-Create GKE, EKS, or AKS cluster, see https://github.com/bstraehle/kubernetes.git#readme  
+Create AWS EKS, AKS, or GKE cluster, see https://github.com/bstraehle/kubernetes.git#readme  
 
 Download and install Istio:  
 ```
