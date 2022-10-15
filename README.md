@@ -10,7 +10,7 @@ Instruct Istio to automatically inject Envoy sidecar proxies:
 ```
 kubectl label namespace default istio-injection=enabled  
 ```
-Create Kubernetes deployments and services, see https://github.com/bstraehle/kubernetes.git#readme  
+Create Kubernetes deployments and services, see https://github.com/bstraehle/kubernetes  
 
 Apply Istio security, traffic management, and observability:  
 ```
