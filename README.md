@@ -4,7 +4,8 @@ Download and install Istio:
 ```
 curl -L https://istio.io/downloadIstio | sh -  
 cd istio-*  
-istioctl install --set profile=demo  
+export PATH=$PWD/bin:$PATH  
+istioctl install --set profile=demo -y  
 ```
 Instruct Istio to automatically inject Envoy sidecar proxies:  
 ```
@@ -21,8 +22,9 @@ kubectl apply -f istio.custom.yaml
 Inspect Istio security, traffic management, observability:  
 ```
 kubectl get pods  
-kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
-istioctl x describe service mvc-app-service  
+kubectl get pods -o=custom-columns="images:spec.containers[*].image" | grep istio  
+istioctl x describe service mvc-app-service | grep "TLS Mode"  
+istioctl x describe service rest-api-service | grep "TLS Mode"  
 ```
 Inspect Istio ingress gateway:  
 ```
