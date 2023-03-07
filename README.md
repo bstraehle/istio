@@ -25,10 +25,10 @@ kubectl apply -f istio.custom.yaml
 ```
 - Inspect Istio security, traffic management, observability:  
 ```
-kubectl get pods  
-kubectl get pods -o=custom-columns="images:spec.containers[*].image" | grep istio  
-istioctl x describe service mvc-app-service | grep "TLS Mode"  
-istioctl x describe service rest-api-service | grep "TLS Mode"  
+kubectl get deployments,pods  
+kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
+istioctl x describe service mvc-app-service  
+istioctl x describe service rest-api-service  
 ```
 - Inspect Istio ingress gateway:  
 ```
