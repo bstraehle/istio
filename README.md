@@ -20,8 +20,8 @@ kubectl apply -f istio.custom.yaml
 ```
 Inspect Istio security, traffic management, observability:  
 ```
-kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
 kubectl get pods  
+kubectl get pods -o=custom-columns="images:spec.containers[*].image"  
 istioctl x describe service mvc-app-service  
 ```
 Inspect Istio ingress gateway:  
