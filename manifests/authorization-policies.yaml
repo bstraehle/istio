@@ -1,0 +1,45 @@
+# Zero trust: deny everything in the namespace by default, then allow only
+# ingress gateway -> mvc-app and mvc-app -> rest-api, by workload identity.
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-nothing
+spec: {}
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: mvc-app
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mvc-app
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            principals:
+              - cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
+      to:
+        - operation:
+            methods: ["GET", "POST"]
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: rest-api
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rest-api
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            principals:
+              - cluster.local/ns/demo/sa/mvc-app
+      to:
+        - operation:
+            # The MVC app lists, adds, updates, and deletes records.
+            methods: ["GET", "POST", "PUT", "DELETE"]
+            paths: ["/Demo", "/Demo/*"]
