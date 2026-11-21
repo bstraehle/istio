@@ -23,7 +23,7 @@ All resources go to the `demo` namespace ([`manifests/`](manifests)):
 | --- | --- | --- |
 | [`gateway.yaml`](manifests/gateway.yaml) | `Gateway`, `VirtualService` | Exposes `mvc-app-service` on port 80 of the Istio ingress gateway, with a 10s timeout and retries |
 | [`peer-authentication.yaml`](manifests/peer-authentication.yaml) | `PeerAuthentication` | Requires mutual TLS (`STRICT`) for all traffic to workloads in the namespace |
-| [`authorization-policies.yaml`](manifests/authorization-policies.yaml) | `AuthorizationPolicy` ×3 | Denies everything by default, then allows only *ingress gateway → mvc-app* and *mvc-app → rest-api* (`/Demo` paths), by workload identity |
+| [`authorization-policies.yaml`](manifests/authorization-policies.yaml) | `AuthorizationPolicy` ×3 | Denies everything by default, then allows only *ingress gateway → mvc-app* and *mvc-app → rest-api* (`GET`/`POST`/`PUT`/`DELETE` on `/Demo` paths), by workload identity |
 
 Traffic between sidecars uses Istio mTLS automatically, so no `DestinationRule` is needed.
 

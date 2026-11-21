@@ -47,6 +47,8 @@ jobs:
         with:
           version: v0.33.0
           node_image: kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5
+          # Cluster teardown occasionally fails on hosted runners after all checks passed.
+          ignore_failed_clean: true
       - name: Install Istio
         run: |
           curl -fsSLo istioctl.tar.gz "https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istioctl-${ISTIO_VERSION}-linux-amd64.tar.gz"
@@ -69,6 +71,8 @@ jobs:
             curl --fail --silent --show-error --retry 30 --retry-delay 2 --retry-all-errors --max-time 10 -o /dev/null "$url"
             echo "OK $url"
           done
+      - name: Check add, update, and delete through the MVC forms
+        run: bash .github/e2e/form-flow.sh http://localhost:8080
       - name: Check denied traffic from other workloads
         run: |
           kubectl apply -f .github/e2e/probe-pod.yaml
