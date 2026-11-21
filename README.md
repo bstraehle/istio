@@ -57,6 +57,8 @@ kubectl -n demo rollout status deployment/rest-api
 kubectl -n demo rollout status deployment/mvc-app
 ```
 
+The pods from before the restart, which have no sidecar, can take a few seconds to terminate. Until they're gone, `istioctl analyze` reports them as `IST0103` (missing the Istio proxy).
+
 ## 4. Apply Istio Policies
 
 ```shell

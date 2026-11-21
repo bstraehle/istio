@@ -63,6 +63,17 @@ jobs:
           kubectl apply -k manifests
           kubectl -n demo rollout status deployment/rest-api --timeout=300s
           kubectl -n demo rollout status deployment/mvc-app --timeout=300s
+      - name: Wait for pods without a sidecar to terminate
+        run: |
+          # rollout status returns once the new pods are ready; the old ones
+          # (no istio-proxy, so no tlsMode label) may still be terminating.
+          for i in $(seq 1 60); do
+            old=$(kubectl -n demo get pods -l 'app.kubernetes.io/part-of=demo,!security.istio.io/tlsMode' -o name)
+            [ -z "${old}" ] && exit 0
+            sleep 2
+          done
+          echo "Pods without a sidecar are still running: ${old}"
+          exit 1
       - run: istioctl analyze -n demo --failure-threshold Warning
       - name: Check allowed traffic through the ingress gateway
         run: |
