@@ -112,4 +112,4 @@ kubectl delete namespace istio-system
 
 - [Istio documentation](https://istio.io/latest/docs/)
 - [Istio security best practices](https://istio.io/latest/docs/ops/best-practices/security/)
-- Book: [O'Reilly: Istio Up & Running](https://www.oreilly.com/library/view/istio-up-and/9781492043775/)
+- Book: [O'Reilly: Istio Up & Running](https://www.amazon.com/Istio-Running-Service-Connect-Control/dp/1492043788)
