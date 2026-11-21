@@ -45,17 +45,19 @@ istioctl install --set profile=demo --set components.cni.enabled=true -y
 
 ## 3. Deploy the Apps into the Mesh
 
-Deploy the apps, turn on automatic sidecar injection for the namespace, and restart the pods so they get Envoy sidecars:
+Create the namespace, turn on automatic sidecar injection for it, then deploy the apps so their pods start with Envoy sidecars:
 
 ```shell
 git clone https://github.com/bstraehle/kubernetes.git
-kubectl apply -k kubernetes/manifests
-
+kubectl apply -f kubernetes/manifests/namespace.yaml
 kubectl label namespace demo istio-injection=enabled
-kubectl -n demo rollout restart deployment/rest-api deployment/mvc-app
+
+kubectl apply -k kubernetes/manifests
 kubectl -n demo rollout status deployment/rest-api
 kubectl -n demo rollout status deployment/mvc-app
 ```
+
+If the apps are already running without sidecars, label the namespace and run `kubectl -n demo rollout restart deployment/rest-api deployment/mvc-app` instead. Until the old pods have terminated, `istioctl analyze` reports them as `IST0103` (missing the Istio proxy).
 
 ## 4. Apply Istio Policies
 
